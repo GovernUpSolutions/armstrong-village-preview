@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armstrong Village HOA | Westphalia, Maryland</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --teal: #007fa3;
+      --teal-dark: #005f7a;
+      --charcoal: #4d5560;
+      --ink: #26313a;
+      --brown: #57332d;
+      --tan: #b8a071;
+      --tan-soft: #eee7d7;
+      --paper: #fbfaf7;
+      --white: #ffffff;
+      --line: #ded8cc;
+      --muted: #66717c;
+      --shadow: 0 12px 36px rgba(38, 49, 58, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(251, 250, 247, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 74px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      min-width: 220px;
+    }
+
+    .brand img {
+      width: 86px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .brand-text strong,
+    .footer-brand strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.98rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span,
+    .footer-brand span {
+      display: block;
+      color: var(--brown);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a,
+    .mobile-menu a {
+      color: var(--charcoal);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover,
+    .mobile-menu a:hover {
+      color: var(--teal-dark);
+      background: var(--tan-soft);
+    }
+
+    .nav-links .portal-link,
+    .mobile-menu .portal-link {
+      color: var(--white);
+      background: var(--teal);
+    }
+
+    .nav-links .portal-link:hover,
+    .mobile-menu .portal-link:hover {
+      color: var(--white);
+      background: var(--teal-dark);
+    }
+
+    .menu-button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      color: var(--ink);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-button span {
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    .mobile-menu {
+      display: none;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto 14px;
+      padding: 10px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 2px;
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(251, 250, 247, 0.96), rgba(251, 250, 247, 0.86)),
+        url("https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1600&q=80") center/cover;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      width: min(1180px, calc(100% - 32px));
+      min-height: calc(100vh - 74px);
+      margin: 0 auto;
+      padding: 64px 0 52px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .hero-logo {
+      width: min(520px, 100%);
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      color: var(--brown);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin-bottom: 18px;
+      color: var(--ink);
+      font-size: clamp(2.35rem, 5vw, 4.9rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 670px;
+      color: var(--charcoal);
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 6px;
+      border: 1px solid var(--teal);
+      color: var(--teal-dark);
+      background: var(--white);
+      font-size: 0.94rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      color: var(--white);
+      background: var(--teal);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0, 127, 163, 0.16);
+    }
+
+    .notice-panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--teal);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .notice-panel h2 {
+      margin-bottom: 6px;
+      font-size: 1.22rem;
+      color: var(--ink);
+    }
+
+    .notice-panel p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 18px;
+    }
+
+    .notice-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .notice-list li {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .date-box {
+      height: 54px;
+      border-radius: 6px;
+      background: var(--tan-soft);
+      color: var(--brown);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .date-box span:first-child {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .date-box span:last-child {
+      font-size: 1.25rem;
+      margin-top: 4px;
+    }
+
+    .notice-list strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 0.96rem;
+    }
+
+    .notice-list small {
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+
+    .section-label {
+      color: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2,
+    .split-copy h2,
+    .contact-box h2 {
+      margin-bottom: 10px;
+      color: var(--ink);
+      font-size: clamp(1.75rem, 3vw, 2.45rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .section-head p,
+    .split-copy p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .quick-link {
+      min-height: 162px;
+      padding: 22px;
+      text-decoration: none;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quick-link:last-child {
+      border-right: 0;
+    }
+
+    .quick-link span {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      background: var(--teal);
+      font-weight: 800;
+    }
+
+    .quick-link h3 {
+      margin: 18px 0 6px;
+      color: var(--ink);
+      font-size: 1.02rem;
+    }
+
+    .quick-link p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .quick-link:hover {
+      background: var(--tan-soft);
+    }
+
+    .split {
+      background: var(--white);
+      border-block: 1px solid var(--line);
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 52px;
+      align-items: start;
+    }
+
+    .community-photo {
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: var(--tan-soft);
+    }
+
+    .community-photo img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      padding: 14px 16px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .fact-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .fact {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--tan);
+      border-radius: 6px;
+      background: var(--paper);
+    }
+
+    .fact strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .events-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .event-row {
+      display: grid;
+      grid-template-columns: 92px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      min-height: 96px;
+      padding: 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .event-date {
+      color: var(--brown);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .event-row h3 {
+      margin-bottom: 3px;
+      font-size: 1.04rem;
+    }
+
+    .event-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .tag {
+      justify-self: end;
+      white-space: nowrap;
+      color: var(--teal-dark);
+      background: #e0f1f5;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .board {
+      background: var(--tan-soft);
+      border-block: 1px solid var(--line);
+    }
+
+    .board-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .board-table th,
+    .board-table td {
+      padding: 16px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .board-table th {
+      color: var(--charcoal);
+      background: var(--paper);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .board-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .board-table td:first-child {
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .resource-link {
+      display: block;
+      min-height: 148px;
+      padding: 20px;
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .resource-link:hover {
+      border-color: var(--teal);
+      box-shadow: var(--shadow);
+    }
+
+    .resource-link strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .resource-link span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .contact {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .contact-box h2,
+    .contact-box p,
+    .contact-list a,
+    .contact-list span {
+      color: var(--white);
+    }
+
+    .contact-box p {
+      color: #d4dde3;
+      max-width: 650px;
+    }
+
+    .contact-list {
+      margin-top: 28px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--tan-soft);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .portal-card {
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .portal-card img {
+      width: 250px;
+      margin-bottom: 20px;
+    }
+
+    .portal-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.18rem;
+    }
+
+    .portal-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .site-footer {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand img {
+      width: 82px;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .hero-inner,
+      .split-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        min-height: auto;
+      }
+
+      .quick-grid,
+      .resources-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .event-row {
+        grid-template-columns: 76px 1fr;
+      }
+
+      .tag {
+        justify-self: start;
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .brand-text {
+        display: none;
+      }
+
+      .brand img {
+        width: 108px;
+      }
+
+      .hero-inner {
+        padding-top: 38px;
+      }
+
+      .hero-logo {
+        width: 100%;
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        font-size: 2.32rem;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+
+      .quick-grid,
+      .resources-grid,
+      .fact-list {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-link {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .quick-link:last-child {
+        border-bottom: 0;
+      }
+
+      .community-photo img {
+        height: 300px;
+      }
+
+      .event-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .tag {
+        grid-column: auto;
+      }
+
+      .board-table {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .footer-inner {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Armstrong Village home">
+        <img src="assets/av-plain-logo.png" alt="Armstrong Village Westphalia, Maryland" />
+        <span class="brand-text">
+          <strong>Armstrong Village</strong>
+          <span>Homeowners Association</span>
+        </span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">Community</a></li>
+        <li><a href="#events">Calendar</a></li>
+        <li><a href="#board">Board</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="portal-link" href="https://townsq.io" target="_blank" rel="noreferrer">TownSq</a></li>
+      </ul>
+
+      <button class="menu-button" id="menu-button" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about">Community</a>
+      <a href="#events">Calendar</a>
+      <a href="#board">Board</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact</a>
+      <a class="portal-link" href="https://townsq.io" target="_blank" rel="noreferrer">TownSq</a>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <img class="hero-logo" src="assets/av-plain-logo.png" alt="Armstrong Village Westphalia, Maryland" />
+          <div class="eyebrow">Westphalia, Maryland</div>
+          <h1 id="hero-title">A practical home base for Armstrong Village residents.</h1>
+          <p class="hero-copy">Find board updates, meeting dates, resident resources, and contact information for the Armstrong Village Homeowners Association.</p>
+          <div class="actions">
+            <a class="button primary" href="#resources">Resident Resources</a>
+            <a class="button" href="mailto:armstrongvillagehoa@gmail.com">Email the Board</a>
+          </div>
+        </div>
+
+        <aside class="notice-panel" aria-labelledby="next-up-title">
+          <h2 id="next-up-title">Next Up</h2>
+          <p>Key dates for 2026. Check TownSq for official notices, Zoom links, and any schedule changes.</p>
+          <ul class="notice-list">
+            <li>
+              <div class="date-box"><span>Jul</span><span>23</span></div>
+              <div>
+                <strong>Annual Community Meeting</strong>
+                <small>6:30 PM on Zoom, including board director election.</small>
+              </div>
+            </li>
+            <li>
+              <div class="date-box"><span>Jul</span><span>25</span></div>
+              <div>
+                <strong>Outdoor Movie Night</strong>
+                <small>Gather at 7:30 PM. Movie starts at 8:30 PM.</small>
+              </div>
+            </li>
+            <li>
+              <div class="date-box"><span>Aug</span><span>22</span></div>
+              <div>
+                <strong>Community Day 2026</strong>
+                <small>Board-produced neighborhood event. Details to follow.</small>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section aria-labelledby="quick-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-label">Common Tasks</div>
+          <h2 id="quick-title">Start with what you need.</h2>
+          <p>Quick links for the things homeowners most often look for.</p>
+        </div>
+
+        <div class="quick-grid">
+          <a class="quick-link" href="https://townsq.io" target="_blank" rel="noreferrer">
+            <span>1</span>
+            <div>
+              <h3>Open TownSq</h3>
+              <p>Pay assessments, view account details, and submit requests.</p>
+            </div>
+          </a>
+          <a class="quick-link" href="mailto:armstrongvillagehoa@gmail.com">
+            <span>2</span>
+            <div>
+              <h3>Contact the Board</h3>
+              <p>Send questions, concerns, and homeowner feedback.</p>
+            </div>
+          </a>
+          <a class="quick-link" href="#resources">
+            <span>3</span>
+            <div>
+              <h3>Find Documents</h3>
+              <p>Access policies, governing documents, and records.</p>
+            </div>
+          </a>
+          <a class="quick-link" href="#events">
+            <span>4</span>
+            <div>
+              <h3>See Events</h3>
+              <p>Review upcoming meetings and community activities.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="split" id="about" aria-labelledby="about-title">
+      <div class="section-inner split-grid">
+        <div class="community-photo">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80" alt="Townhome street in a residential community" />
+          <div class="photo-caption">Armstrong Village is part of the Westphalia community in Prince George's County.</div>
+        </div>
+
+        <div class="split-copy">
+          <div class="section-label">Our Community</div>
+          <h2 id="about-title">Board service, clear information, and a neighborhood that works.</h2>
+          <p>Armstrong Village is a townhome community in Upper Marlboro near major commuter routes, Joint Base Andrews, and the Beltway. This website is intended to keep practical information easy to find for homeowners and residents.</p>
+
+          <div class="fact-list">
+            <div class="fact">
+              <strong>292 total units</strong>
+              <span>204 original homes plus 88 WestEnd units through annexation.</span>
+            </div>
+            <div class="fact">
+              <strong>Managed by CMC</strong>
+              <span>Associa Community Management Corporation supports day-to-day operations.</span>
+            </div>
+            <div class="fact">
+              <strong>TownSq platform</strong>
+              <span>The secure resident portal remains the official account and request hub.</span>
+            </div>
+            <div class="fact">
+              <strong>Reserve planning</strong>
+              <span>A full reserve study was completed in November 2025.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" aria-labelledby="events-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-label">2026 Calendar</div>
+          <h2 id="events-title">Community meetings and events.</h2>
+          <p>Dates shown here are for quick reference. TownSq notices should be used for official event details and links.</p>
+        </div>
+
+        <div class="events-list">
+          <article class="event-row">
+            <div class="event-date">Jul 23</div>
+            <div>
+              <h3>Annual Community Meeting</h3>
+              <p>Zoom, 6:30 PM. Includes board director election.</p>
+            </div>
+            <span class="tag">Governance</span>
+          </article>
+          <article class="event-row">
+            <div class="event-date">Jul 25</div>
+            <div>
+              <h3>Outdoor Movie Night</h3>
+              <p>Gather at 7:30 PM. Movie starts at 8:30 PM.</p>
+            </div>
+            <span class="tag">Family Event</span>
+          </article>
+          <article class="event-row">
+            <div class="event-date">Aug 22</div>
+            <div>
+              <h3>Community Day 2026</h3>
+              <p>Board-produced neighborhood event with details to be announced.</p>
+            </div>
+            <span class="tag">Community</span>
+          </article>
+          <article class="event-row">
+            <div class="event-date">Oct 25</div>
+            <div>
+              <h3>Halloween Decorating Contest</h3>
+              <p>Decorate your home. Board judging on October 25.</p>
+            </div>
+            <span class="tag">Contest</span>
+          </article>
+          <article class="event-row">
+            <div class="event-date">Dec 13</div>
+            <div>
+              <h3>Holiday Lights Contest</h3>
+              <p>Announced November 15 and judged December 13.</p>
+            </div>
+            <span class="tag">Contest</span>
+          </article>
+          <article class="event-row">
+            <div class="event-date">May-Sep</div>
+            <div>
+              <h3>Saturday Walk / Run Club</h3>
+              <p>Weekly Saturday morning activity. Walkers and runners self-sort.</p>
+            </div>
+            <span class="tag">Fitness</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="board" id="board" aria-labelledby="board-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-label">Leadership</div>
+          <h2 id="board-title">Board of Directors.</h2>
+          <p>Elected directors serve the homeowners association and communicate decisions through official HOA channels.</p>
+        </div>
+
+        <table class="board-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Blake Hemphill</td>
+              <td>President</td>
+            </tr>
+            <tr>
+              <td>Robert Palmer</td>
+              <td>Vice President</td>
+            </tr>
+            <tr>
+              <td>Kiara Palmer</td>
+              <td>Secretary</td>
+            </tr>
+            <tr>
+              <td>Crystal Mansel</td>
+              <td>Treasurer</td>
+            </tr>
+            <tr>
+              <td>Richard Castillo</td>
+              <td>Member-at-Large</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="resources" aria-labelledby="resources-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-label">Resident Resources</div>
+          <h2 id="resources-title">Useful homeowner links.</h2>
+          <p>These links are placeholders where local PDFs or official pages can be connected as the site content is finalized.</p>
+        </div>
+
+        <div class="resources-grid">
+          <a class="resource-link" href="https://townsq.io" target="_blank" rel="noreferrer">
+            <strong>TownSq Resident Portal</strong>
+            <span>Account access, assessments, maintenance requests, and official notices.</span>
+          </a>
+          <a class="resource-link" href="mailto:armstrongvillagehoa@gmail.com">
+            <strong>Board Email</strong>
+            <span>Contact the HOA board at armstrongvillagehoa@gmail.com.</span>
+          </a>
+          <a class="resource-link" href="#resources">
+            <strong>Governing Documents</strong>
+            <span>Declaration, bylaws, covenants, and design guidelines.</span>
+          </a>
+          <a class="resource-link" href="#resources">
+            <strong>ARC Application</strong>
+            <span>Architectural request information for exterior home changes.</span>
+          </a>
+          <a class="resource-link" href="#resources">
+            <strong>Community Policies</strong>
+            <span>Parking, enforcement, pet waste, litter, and other homeowner policies.</span>
+          </a>
+          <a class="resource-link" href="#resources">
+            <strong>Minutes & Financials</strong>
+            <span>Board meeting minutes and financial packages for homeowners.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-inner contact-grid">
+        <div class="contact-box">
+          <div class="section-label">Contact</div>
+          <h2 id="contact-title">Questions should start with the right channel.</h2>
+          <p>The board can help route resident questions, but TownSq remains the secure place for account-specific requests, payments, and official records.</p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong>Board Email</strong>
+              <a href="mailto:armstrongvillagehoa@gmail.com">armstrongvillagehoa@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <strong>Property Management</strong>
+              <span>CMC / Associa, 9841 Broken Land Pkwy, Suite 306, Columbia, MD 21046<br />301-692-1700</span>
+            </div>
+            <div class="contact-item">
+              <strong>Location</strong>
+              <span>Upper Marlboro, Westphalia, Maryland 20772</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="portal-card">
+          <img src="assets/av-plain-logo.png" alt="Armstrong Village" />
+          <h3>New to Armstrong Village?</h3>
+          <p>Create or confirm your TownSq account so you can receive official HOA notices, submit requests, and manage your account.</p>
+          <a class="button primary" href="https://townsq.io" target="_blank" rel="noreferrer">Open TownSq</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/av-plain-logo.png" alt="Armstrong Village" />
+        <span>
+          <strong>Armstrong Village Homeowners Association, Inc.</strong>
+          <span>Westphalia, Maryland</span>
+        </span>
+      </div>
+      <div>&copy; 2026 Armstrong Village HOA. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility | Armstrong Village HOA</title>
+  <meta name="description" content="Accessibility information for the Armstrong Village Homeowners Association website.">
+  <link rel="icon" type="image/png" href="assets/av-plain-logo.png">
+  <link rel="apple-touch-icon" href="assets/av-plain-logo.png">
+  <style>
+    :root {
+      --teal: #007fa3;
+      --teal-dark: #005f7a;
+      --ink: #26313a;
+      --charcoal: #4d5560;
+      --paper: #fbfaf7;
+      --white: #ffffff;
+      --line: #ded8cc;
+      --muted: #66717c;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    a {
+      color: var(--teal-dark);
+      font-weight: 600;
+    }
+
+    .container {
+      width: min(860px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(251, 250, 247, 0.96);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand img {
+      height: 56px;
+      width: auto;
+      display: block;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-weight: 700;
+    }
+
+    main {
+      padding: 64px 0 72px;
+    }
+
+    .page-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(28px, 5vw, 48px);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+    }
+
+    h2 {
+      margin: 34px 0 8px;
+      font-size: 1.25rem;
+    }
+
+    p,
+    li {
+      color: var(--charcoal);
+    }
+
+    .updated {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="armstrong-village-webiste.html" aria-label="Armstrong Village HOA home">
+        <img src="assets/av-plain-logo.png" alt="Armstrong Village HOA">
+      </a>
+      <a class="back-link" href="armstrong-village-webiste.html">Back to site</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article class="page-card">
+        <h1>Accessibility</h1>
+        <p class="updated">Last updated June 28, 2026</p>
+
+        <p>Armstrong Village Homeowners Association wants residents and visitors to be able to use this website in a practical and accessible way.</p>
+
+        <h2>Accessibility approach</h2>
+        <p>This site is designed as a simple static website with readable text, keyboard-friendly links, descriptive page titles, alt text for meaningful images, and layouts that adapt to smaller screens. The site aims to support commonly accepted accessibility practices, including WCAG 2.1 AA principles where practical for a small community website.</p>
+
+        <h2>Known limitations</h2>
+        <p>Some documents, downloaded files, embedded images, or third-party services may not meet the same accessibility standard as the main website. This includes content hosted by TownSq, Facebook, email providers, or document files that were created outside this website.</p>
+
+        <h2>Requesting help or an alternate format</h2>
+        <p>If you cannot access information on this website, the board can help route the request or provide information in another reasonable format when available. Please include the page or document name, the issue you encountered, and the format that would work better for you.</p>
+
+        <h2>Contact</h2>
+        <p>For accessibility feedback or assistance, contact the board at <a href="mailto:armstrongvillagehoa@gmail.com?subject=Accessibility%20Feedback">armstrongvillagehoa@gmail.com</a>.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">© Armstrong Village Homeowners Association, Inc.</div>
+  </footer>
+</body>
+</html>
